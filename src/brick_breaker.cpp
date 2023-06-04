@@ -16,13 +16,45 @@
 
 #include "brick_breaker.hpp"
 #include "game.hpp"
+#include "debug.hpp"
 
-void BrickBreaker::Init() {
-    state = GAME_START;
-}
+void BrickBreaker::Init() {}
 
 void BrickBreaker::Update() {}
 
-void BrickBreaker::ProcessInput() {}
+void BrickBreaker::ProcessInput() {
+    // Game main menu
+    if (state == GAME_START) {
+        if (IsKeyPressed(KEY_SPACE)) {
+            state = PRE_GAME;
+        }
+    }
 
-void BrickBreaker::Render() {}
+    // Game loaded but round not started
+    else if (state == PRE_GAME) {
+        if (IsKeyPressed(KEY_SPACE)) {
+            state = GAME_ACTIVE;
+        }
+    }
+
+    // Game in progress
+    else if (state == GAME_ACTIVE) {
+
+    }
+
+    // Game over - all lives lost
+    else if (state == GAME_OVER) {
+
+    }
+
+    // Game Complete - all levels finished
+    else if (state == GAME_COMPLETE) {
+    }
+}
+
+void BrickBreaker::Render() {
+    BeginDrawing();
+    ClearBackground(BLACK);
+    debug::DrawGameStateData(state);
+    EndDrawing();
+}

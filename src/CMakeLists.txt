@@ -5,11 +5,13 @@ set(SOURCE_LIST
     ${SOURCE_CODE_DIR}/main.cpp
     ${SOURCE_CODE_DIR}/game.cpp
     ${SOURCE_CODE_DIR}/brick_breaker.cpp
+    ${SOURCE_CODE_DIR}/debug.cpp
 )
 
 set(HEADER_LIST
     ${INCLUDE_DIR}/game.hpp
-    ${INCLUDE_DIR}/brick_breaker.hpp)
+    ${INCLUDE_DIR}/brick_breaker.hpp
+    ${INCLUDE_DIR}/debug.hpp)
 
 add_executable(${PROJECT_NAME}_run ${SOURCE_LIST} ${HEADER_LIST})
 add_library(${PROJECT_NAME}_lib STATIC ${SOURCE_LIST} ${HEADER_LIST})

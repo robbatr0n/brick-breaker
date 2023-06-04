@@ -13,14 +13,14 @@
  * @brief Contains all game state options
  *  GAME_START - The games main menu
  *  GAME_ACTIVE - A round of brick breaker is in progress
- *  LEVEL_COMPLETE - A player has completed a level
+ *  PRE_GAME - Level has loaded but game has not started yet
  *  GAME_OVER - A player has lost all of their lives
  *  GAME_COMPLETE - A levels have been completed
  */
 enum GameState {
     GAME_START,
+    PRE_GAME,
     GAME_ACTIVE,
-    LEVEL_COMPLETE,
     GAME_OVER,
     GAME_COMPLETE
 };
