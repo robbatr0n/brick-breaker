@@ -9,6 +9,9 @@
 #ifndef BRICK_BREAKER_HPP
 #define BRICK_BREAKER_HPP
 
+#include "paddle.hpp"
+#include "ball.hpp"
+
 /**
  * @brief Contains all game state options
  *  GAME_START - The games main menu
@@ -30,6 +33,8 @@ class BrickBreaker {
   public:
 
     GameState state{GAME_START};
+    Paddle paddle;
+    Ball ball;
 
     /**
      * @brief Initialises the game. Responsible for:
