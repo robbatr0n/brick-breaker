@@ -12,6 +12,7 @@
 #include "paddle.hpp"
 #include "ball.hpp"
 #include "level.hpp"
+#include "powerup.hpp"
 
 /**
  * @brief Contains all game state options
