@@ -21,6 +21,28 @@ namespace gui {
     void DrawMainMenu();
 
     /**
+     * @brief
+     */
+    void MoveUpMainMenu();
+
+    /**
+     * @brief
+     */
+    void MoveDownMainMenu();
+
+    /**
+     * @brief Get the Current Main Menu Option object
+     * @return int
+     */
+    int GetCurrentMainMenuOption();
+
+    /**
+     * @brief
+     *
+     */
+    void DrawPreGameUI();
+
+    /**
      * @brief Draws the in-game UI.
      * @param lives - player lives
      * @param score  - player score
@@ -36,12 +58,16 @@ namespace gui {
      */
     void DrawLevelText(int level_text);
 
-    void MoveUpMainMenu();
-    void MoveDownMainMenu();
-    int GetCurrentMainMenuOption();
+    /**
+     * @brief
+     */
     void DrawGameOverScreen();
 
-    void DrawGameState(GameState state, int current_level, int bricks_in_current_level);
+    /**
+     * @brief
+     */
+    void DrawGameCompleteScreen(int score);
+
 };
 
 #endif

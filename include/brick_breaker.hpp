@@ -11,6 +11,7 @@
 
 #include "paddle.hpp"
 #include "ball.hpp"
+#include "level.hpp"
 
 /**
  * @brief Contains all game state options
@@ -35,6 +36,11 @@ class BrickBreaker {
     GameState state{GAME_START};
     Paddle paddle;
     Ball ball;
+    int current_level;
+    int level_count;
+    std::vector<Level> levels;
+    int score;
+    int lives;
 
     /**
      * @brief Initialises the game. Responsible for:
@@ -56,6 +62,27 @@ class BrickBreaker {
      * rendered depends on the game state
      */
     void Render();
+
+    /**
+     * @brief Loads all game levels inside the levels folder into the levels vector
+     * ready to be drawn to the screen
+     */
+    void LoadLevels();
+
+    /**
+     * @brief Watches for and handles any collisions between game objects
+     */
+    void HandleCollisions();
+
+    /**
+     * @brief Resets the round after a life has been lost. Responsible for:
+     */
+    void ResetRound();
+
+    /**
+     * @brief Resets the game after all lives has been lost. Responsible for:
+     */
+    void ResetGame();
 };
 
 #endif

@@ -7,6 +7,9 @@ set(SOURCE_LIST
     ${SOURCE_CODE_DIR}/brick_breaker.cpp
     ${SOURCE_CODE_DIR}/paddle.cpp
     ${SOURCE_CODE_DIR}/ball.cpp
+    ${SOURCE_CODE_DIR}/level.cpp
+    ${SOURCE_CODE_DIR}/brick.cpp
+    ${SOURCE_CODE_DIR}/check_collisions.cpp
     ${SOURCE_CODE_DIR}/gui.cpp
     ${SOURCE_CODE_DIR}/debug.cpp
 )
@@ -16,6 +19,9 @@ set(HEADER_LIST
     ${INCLUDE_DIR}/brick_breaker.hpp
     ${INCLUDE_DIR}/paddle.hpp
     ${INCLUDE_DIR}/ball.hpp
+    ${INCLUDE_DIR}/level.hpp
+    ${INCLUDE_DIR}/brick.hpp
+    ${INCLUDE_DIR}/check_collisions.hpp
     ${INCLUDE_DIR}/gui.hpp
     ${INCLUDE_DIR}/debug.hpp
 )

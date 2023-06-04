@@ -9,6 +9,7 @@
 
 namespace debug {
 
-    void DrawGameStateData(GameState state);
+    void DrawGameStateData(GameState state, int lives, int current_level, int score,
+                           int level_count);
 
 }

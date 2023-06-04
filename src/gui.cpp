@@ -56,6 +56,12 @@ void gui::DrawMainMenu() {
     }
 }
 
+void gui::DrawPreGameUI() {
+    const char *pre_game_text = TextFormat("Press SPACE to begin");
+    int pre_game_text_width = MeasureText(pre_game_text, 32);
+    DrawText(pre_game_text, (GetScreenWidth() / 2) - pre_game_text_width / 2, 350, 32, WHITE);
+}
+
 void gui::DrawInGameUI(int lives, int score, int current_level, int total_levels) {
     DrawText(TextFormat("LIVES: %i", lives), 10, GetScreenHeight() - 20, 16, WHITE);
     DrawText(TextFormat("Score: %i", score), 10, 7, 16, WHITE);
@@ -100,25 +106,17 @@ void gui::DrawGameOverScreen() {
              WHITE);
 }
 
-void gui::DrawGameState(GameState state, int current_level, int bricks_in_current_level) {
-    const char *state_text;
-    if (state == 0) {
-        state_text = "GAME_START";
-    }
-    if (state == 1) {
-        state_text = "GAME_ACTIVE";
-    }
-    if (state == 2) {
-        state_text = "LEVEL_COMPLETE";
-    }
-    if (state == 3) {
-        state_text = "GAME_OVER";
-    }
-    if (state == 4) {
-        state_text = "GAME_COMPLETE";
-    }
+void gui::DrawGameCompleteScreen(int score) {
+    const char *game_over_title = "Game Complete!!";
+    int game_over_title_width = MeasureText(game_over_title, 48);
+    DrawText(game_over_title, (GetScreenWidth() / 2) - game_over_title_width / 2, 150, 48, WHITE);
 
-    DrawText(state_text, 10, 300, 16, WHITE);
-    DrawText(TextFormat("level: %i", current_level), 10, 330, 16, WHITE);
-    DrawText(TextFormat("number of bricks: %i", bricks_in_current_level), 10, 360, 16, WHITE);
+    const char *game_over_subtitle = "Press SPACE to go to the main menu";
+    int game_over_subtitle_width = MeasureText(game_over_subtitle, 28);
+    DrawText(game_over_subtitle, (GetScreenWidth() / 2) - game_over_subtitle_width / 2, 250, 28,
+             WHITE);
+
+    const char *score_text = TextFormat("Score: %i", score);
+    int score_text_width = MeasureText(score_text, 28);
+    DrawText(score_text, (GetScreenWidth() / 2) - score_text_width / 2, 350, 28, WHITE);
 }

@@ -9,7 +9,8 @@
 
 #include "debug.hpp"
 
-void debug::DrawGameStateData(GameState state) {
+void debug::DrawGameStateData(GameState state, int lives, int current_level, int score,
+                              int level_count) {
     const char *state_text;
     if (state == 0) {
         state_text = "GAME_START";
@@ -28,4 +29,8 @@ void debug::DrawGameStateData(GameState state) {
     }
 
     DrawText(state_text, 10, 300, 16, WHITE);
+    DrawText(TextFormat("lives: %i", lives), 10, 320, 16, WHITE);
+    DrawText(TextFormat("current level: %i", current_level), 10, 340, 16, WHITE);
+    DrawText(TextFormat("score: %i", score), 10, 360, 16, WHITE);
+    DrawText(TextFormat("total levels: %i", level_count), 10, 380, 16, WHITE);
 }
