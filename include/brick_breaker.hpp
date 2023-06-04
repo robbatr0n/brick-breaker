@@ -29,7 +29,7 @@ class BrickBreaker {
 
   public:
 
-    GameState state;
+    GameState state{GAME_START};
 
     /**
      * @brief Initialises the game. Responsible for:
