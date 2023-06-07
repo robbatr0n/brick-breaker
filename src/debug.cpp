@@ -34,3 +34,7 @@ void debug::DrawGameStateData(GameState state, int lives, int current_level, int
     DrawText(TextFormat("score: %i", score), 10, 360, 16, WHITE);
     DrawText(TextFormat("total levels: %i", level_count), 10, 380, 16, WHITE);
 }
+
+void debug::DrawPaddleInfo(int paddle_speed) {
+    DrawText(TextFormat("Speed: %i", paddle_speed), GetScreenWidth() - 100, 300, 16, WHITE);
+}
