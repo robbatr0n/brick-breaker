@@ -21,24 +21,23 @@ namespace gui {
     void DrawMainMenu();
 
     /**
-     * @brief
+     * @brief Moves up the main menu
      */
     void MoveUpMainMenu();
 
     /**
-     * @brief
+     * @brief Moves down the main menu
      */
     void MoveDownMainMenu();
 
     /**
-     * @brief Get the Current Main Menu Option object
-     * @return int
+     * @brief Get the Current Main Menu Option
+     * @return int - main menu option
      */
     int GetCurrentMainMenuOption();
 
     /**
-     * @brief
-     *
+     * @brief Draws the Pre Game UI
      */
     void DrawPreGameUI();
 
@@ -59,12 +58,12 @@ namespace gui {
     void DrawLevelText(int level_text);
 
     /**
-     * @brief
+     * @brief Draws the game over screen
      */
     void DrawGameOverScreen();
 
     /**
-     * @brief
+     * @brief Draws the game complete screen
      */
     void DrawGameCompleteScreen(int score);
 
