@@ -20,6 +20,12 @@
 #include "gui.hpp"
 #include "debug.hpp"
 
+bool ShouldSpawn(unsigned int chance);
+bool ShouldSpawn(unsigned int chance) {
+    unsigned int random = rand() % chance;
+    return random == 0;
+}
+
 void BrickBreaker::Init() {
     current_level = 0;
     score = 0;
@@ -54,6 +60,10 @@ void BrickBreaker::Update() {
                 ResetRound();
             }
         }
+    }
+
+    for (Powerup &powerup : powerups) {
+        powerup.Move();
     }
 
     HandleCollisions();
@@ -118,8 +128,6 @@ void BrickBreaker::Render() {
     BeginDrawing();
     ClearBackground(BLACK);
 
-    debug::DrawGameStateData(state, lives, current_level, score, level_count);
-
     // Game main menu
     if (state == GAME_START) {
         gui::DrawMainMenu();
@@ -134,6 +142,10 @@ void BrickBreaker::Render() {
         paddle.Draw();
         ball.Draw();
         levels[current_level].Draw();
+        for (Powerup &powerup : powerups) {
+            powerup.Draw();
+        }
+        gui::DrawInGameUI(lives, score, current_level, level_count);
     }
 
     // Game over - all lives lost
@@ -182,7 +194,12 @@ void BrickBreaker::HandleCollisions() {
             Collision collision = check_collisions::CheckBallBrickCollisions(ball, brick);
 
             if (std::get<0>(collision)) {
-
+                if (ShouldSpawn(15)) {
+                    Powerup powerup;
+                    powerup.SpawnPowerup(brick.pos);
+                    powerups.push_back(powerup);
+                    std::cout << "power up added" << std::endl;
+                }
                 if (brick.lives > 1) {
                     brick.lives--;
                     score += 10;
@@ -211,15 +228,39 @@ void BrickBreaker::HandleCollisions() {
             }
         }
     }
+
+    if (powerups.size() > 0) {
+        for (int i = 0; i < powerups.size(); i++) {
+            if (check_collisions::CheckPaddlePowerupCollisions(paddle, powerups[i])) {
+                ActivatePowerup(powerups[i].GetPowerupType());
+                powerups[i].hit = true;
+                powerups.erase(powerups.begin() + i);
+            }
+        }
+    }
+}
+
+void BrickBreaker::ActivatePowerup(PowerupType p) {
+    if (p == SUPER_SPEED) {
+        paddle.speed = paddle.max_speed;
+    } else if (p == BIG_PADDLE) {
+        paddle.size = glm::vec2(paddle.DEFAULT_SIZE.x * 2, paddle.size.y);
+    }
+}
+
+void BrickBreaker::DisablePowerups() {
+    powerups.clear();
 }
 
 void BrickBreaker::ResetRound() {
     ball.Reset();
     paddle.Reset();
+    DisablePowerups();
 }
 
 void BrickBreaker::ResetGame() {
     ball.Reset();
     paddle.Reset();
+    DisablePowerups();
     Init();
 }

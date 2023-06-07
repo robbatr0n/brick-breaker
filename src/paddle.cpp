@@ -29,6 +29,8 @@ Rectangle Paddle::GetRect() {
 
 void Paddle::Reset() {
     pos = STARTING_POSITION;
+    speed = DEFAULT_SPEED;
+    size = DEFAULT_SIZE;
 }
 
 void Paddle::Draw() {

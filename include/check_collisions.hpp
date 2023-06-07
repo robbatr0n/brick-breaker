@@ -13,6 +13,7 @@
 #include "paddle.hpp"
 #include "ball.hpp"
 #include "brick.hpp"
+#include "powerup.hpp"
 
 enum Direction {
     TOP,
@@ -37,6 +38,15 @@ namespace check_collisions {
      * @return false - if a collision does not happen
      */
     bool CheckPaddleBallCollisions(Paddle paddle, Ball ball);
+
+    /**
+     * @brief
+     * @param paddle
+     * @param powerup
+     * @return true
+     * @return false
+     */
+    bool CheckPaddlePowerupCollisions(Paddle paddle, Powerup powerup);
 
     /**
      * @brief Checks for a collision between the ball and a brick

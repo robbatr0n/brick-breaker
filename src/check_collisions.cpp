@@ -17,6 +17,14 @@ bool check_collisions::CheckPaddleBallCollisions(Paddle paddle, Ball ball) {
     }
 }
 
+bool check_collisions::CheckPaddlePowerupCollisions(Paddle paddle, Powerup powerup) {
+    if (CheckCollisionRecs(paddle.GetRect(), powerup.GetRect())) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 Collision check_collisions::CheckBallBrickCollisions(Ball ball, Brick brick) {
     glm::vec2 center(ball.pos + ball.radius);   // Get center point of the ball
     // calculate AABB info (center, half-extents)

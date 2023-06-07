@@ -39,22 +39,33 @@ class BrickBreaker {
     Ball ball;
     int current_level;
     int level_count;
+    std::vector<Powerup> powerups;
     std::vector<Level> levels;
     int score;
     int lives;
 
     /**
      * @brief Initialises the game. Responsible for:
+     *  Setting the inital level
+     *  Setting the inital lives
+     *  Setting the inital score
+     *  Loading the levels
      */
     void Init();
 
     /**
      * @brief Updates the game. Responsible for:
+     *  Moving the ball
+     *  Checking the see if the game has been won or lost
+     *  Updating the level number
+     *  Moving powerups
      */
     void Update();
 
     /**
      * @brief Handles user input. Responsible for:
+     *  Navigating menus
+     *  Moving the paddle
      */
     void ProcessInput();
 
@@ -74,6 +85,17 @@ class BrickBreaker {
      * @brief Watches for and handles any collisions between game objects
      */
     void HandleCollisions();
+
+    /**
+     * @brief Activates the powerup provided as a parameter
+     * @param powerup_type - the type of powerup to be activated
+     */
+    void ActivatePowerup(PowerupType powerup_type);
+
+    /**
+     * @brief Clears all active powerups
+     */
+    void DisablePowerups();
 
     /**
      * @brief Resets the round after a life has been lost. Responsible for:
