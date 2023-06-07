@@ -23,6 +23,8 @@ void game::Run() {
         brick_breaker.Update();
         brick_breaker.Render();
     }
+
+    CleanUp();
 }
 
 void game::CleanUp() {
